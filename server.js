@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 // sessions
 app.use(session({
     name: 'sid',
-    secret: 'secret',
+    secret: process.env.WEBSITE_KEY,
     cookie: {
         maxAge: 1000 * 60 * 60 * 2
     },
@@ -63,6 +63,6 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/logApp', logAppRouter);
 
-app.listen(5000, () => console.log("listening on port 5000"));
+app.listen(process.env.PORT || 5000, () => console.log("listening on port 5000"));
 
 
