@@ -1,0 +1,83 @@
+extends ../layouts/layout
+
+block content
+    //- Main Page
+    div.container 
+        if user
+            a.btn.btn-outline-info.btn-sm(href="/logApp/add") New Log
+        table.table.table-hover.table-dark.table-striped
+            thead
+                tr
+                    th User
+                    th Location
+                    th Date
+                    th Comment
+                    th Update
+                    th Delete
+            tbody
+                    for log in logs
+                        tr
+                            td= log.User.username
+                            td= log.location
+                            td= log.createdAt
+                            td= log.comment
+                            if user
+                                if log.User.id == user.id
+                                    td
+                                        a.btn.btn-secondary.btn-sm.m-1(href="/logApp/update/"+ log.id) Update
+                                    td
+                                        button.btn.btn-danger.btn-sm.m-1(type="button" data-toggle="modal" data-target="#deleteModal"+ log.id) Delete
+                                else
+                                    td
+                                    td
+                            else
+                                td
+                                td
+    //- Pagination
+    div.container
+        - var i = 1
+        while i < paginate.count / paginate.pageSize
+            if i == paginate.page
+                a.btn.btn-primary.btn-sm(href="/logApp/logs/"+ i)= i++
+            else
+                a.btn.btn-outline-primary.btn-sm(href="/logApp/logs/"+ i)= i++
+            
+    //- Modals
+    for log in logs
+        <!--Modals-->
+            div.modal.fade(id="deleteModal"+ log.id tabindex="-1" role="dialog" aria-labelledby="deleteModal"+log.id+"Label" aria-hidden="true")
+                div.modal-dialog( role="document")
+                    div.modal-content
+                        div.modal-header
+                            h5.modal-title(id="deleteModal" + log.id + "Label") Delete Log?
+                            button.close( type="button" data-dismiss="modal" aria-label="close")
+                                span( aria-hidden="true") &times;
+                        div.modal-footer
+                            button.btn.btn-secondary( type="button" data-dismiss="modal") Close
+                            form( action="/logApp/delete/"+ log.id method="POST")
+                                input.btn.btn-danger( type="submit" value="Delete" )
+
+//- SideBar
+block sidebar-type
+    h4 CRUD Applcation
+
+block sidebar-tech
+    ul
+        li 
+            h4 Nodejs
+        li 
+            h4 Express
+        li 
+            h4 Postgres
+        li 
+            h4 Sequelize
+    
+block sidebar-desc
+    h4 LogApp is a simple CRUD application, but displayed in a way that allows users to identify correlations between other logs.
+
+block sidebar-comment
+    h4 Come back to this page after logging in to create logs and to update/delete logs you have created.
+
+
+
+

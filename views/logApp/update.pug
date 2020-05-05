@@ -1,0 +1,31 @@
+extends ../layouts/layout
+
+block content
+    form(action="/logApp/update/" + logId, method="POST")
+        fieldset.form-group
+            legend.border-bottom.mb-4 Update Log
+            <!--Location-->
+            div.form-group
+                #{form.location.label}.form-control-label Location
+                if form.location.errors.length > 0
+                    #{form.location.field}.form-control.form-control-lg.is-invalid(value=form.location.text)
+                    div.invalid-feedback
+                        for error in form.location.errors
+                            span= error
+                else
+                    #{form.location.field}.form-control.form-control-lg(value=form.location.text)
+
+            <!--Comment-->
+            div.form-group
+                #{form.comment.label}.form-control-label Comment
+                if form.comment.errors.length > 0
+                    #{form.comment.field}.form-control.form-control-lg.is-invalid #{form.comment.text}
+                    div.invalid-feedback
+                        for error in form.comment.errors
+                            span= error
+                else
+                    #{form.comment.field}.form-control.form-control-lg #{form.comment.text}
+
+        <!--Submit-->
+        div.form.group
+            button.btn.btn-outline-info(type="submit") Update

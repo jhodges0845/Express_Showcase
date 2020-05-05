@@ -1,0 +1,57 @@
+extends ../layouts/layout
+
+block content
+    div.container 
+        if user
+            a.btn.btn-outline-info.btn-sm(href="/logApp/add") New Log
+        table.table.table-hover.table-dark.table-striped
+            thead
+                tr
+                    th User
+                    th Location
+                    th Date
+                    th Comment
+                    th Update
+                    th Delete
+            tbody
+                for luser in users
+                    for log in luser.Logs
+                        tr
+                            td= luser.username
+                            td= log.location
+                            td= log.createdAt
+                            td= log.comment
+                            if user
+                                if luser.id == user.id
+                                    td
+                                        a.btn.btn-secondary.btn-sm(href="/logApp/update/"+ log.id) Update
+                                    td
+                                        a.btn.btn-danger.btn-sm(href="/logApp/delete/"+ log.id) Delete
+                                else
+                                    td
+                                    td
+                            else
+                                td
+                                td
+
+
+
+block sidebar-type
+    p CRUD Applcation
+
+block sidebar-tech
+    ul
+        li Nodejs
+        li Express
+        li Postgres
+        li Sequelize
+    
+block sidebar-desc
+    p LogApp is a simple CRUD application, but displayed in a way that allows users to identify correlations between other logs.
+
+block sidebar-comment
+    p Come back to this page after logging in to create logs and to update/delete logs you have created.
+
+
+
+

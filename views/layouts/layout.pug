@@ -1,0 +1,82 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    
+    <!--CSS-->
+    link(rel='stylesheet', href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    title= title
+  body
+    <!--Navbar-->
+    div.container
+      header.site-header
+        nav.navbar.navbar-expand-md.navbar-dark.bg-dark.fixed-top
+          div.container
+            <!--Brand-->
+            a.navbar-brand.mr-4(href="/") Hodges Express Showcase
+            button.navbar-toggler(type="button", data-toggle="collapse", data-target="#navbarToggle")
+              span.navbar-toggler-icon
+            div.collapse.navbar-collapse#navbarToggle
+              <!--Main Nav Content-->
+              div.navbar-nav.mr-auto
+                a.nav-item.nav-link(href="/") Home
+                a.nav-item.nav-link(href="/logApp/") Logs
+              <!--Right Side Nav Content-->
+              div.navbar-nav
+                if user
+                  a.nav-item.nav-link(href="/users/account") Account
+                  a.nav-item.nav-link(href="/users/logout") Logout
+                else
+                  a.nav-item.nav-link(href="/users/login") Login
+                  a.nav-item.nav-link(href="/users/register") Register
+    
+      <!--Flash Message-->
+      div.container
+        if message
+          div(class="alert alert-"+ message.type)= message.msg 
+
+
+    <!--Content-->
+    div.container
+      div.row
+        div.col-md-9
+          block content
+        div.col-md-3
+          //- Sidebar
+          div#accordion
+            div.card
+              div.card-header.bg-dark.text-center
+                a.card-link(data-toggle="collapse" href="#collapseOne")
+                  h3.text-success App Type:
+              div#collapseOne.collapse.show(data-parent="#accordion")
+                div.card-body
+                  block sidebar-type
+            div.card
+              div.card-header.bg-dark.text-center
+                a.card-link(data-toggle="collapse" href="#collapseTwo")
+                  h3.text-success Techonologies:
+              div#collapseTwo.collapse(data-parent="#accordion")
+                div.card-body
+                  block sidebar-tech
+            div.card
+              div.card-header.bg-dark.text-center
+                a.card-link(data-toggle="collapse" href="#collapseThree") 
+                  h3.text-success Description:
+              div#collapseThree.collapse(data-parent="#accordion")
+                div.card-body
+                  block sidebar-desc
+            div.card
+              div.card-header.bg-dark.text-center
+                a.card-link(data-toggle="collapse" href="#collapseFour")
+                  h3.text-success Comments:
+              div#collapseFour.collapse(data-parent="#accordion")
+                div.card-body
+                  block sidebar-comment
+
+    <!--Scripts-->
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1", crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js", integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM", crossorigin="anonymous" )

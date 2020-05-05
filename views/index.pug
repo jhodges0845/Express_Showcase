@@ -1,0 +1,55 @@
+extends layouts/layout
+
+block content
+  div.container
+    div.row
+      <!--Flask-->
+      div.col-6-md
+        a(style="text-decoration: none;", href="https://hodges-flask-showcase.herokuapp.com")
+          div.bg-flask.p-5.text-center
+            h3 Flask Showcase
+            img.showcase-img(src="images/flask_icon.png")
+
+      <!--Django-->
+      div.col-6-md
+        a(style="text-decoration: none;", href="https://hodges-django-showcase.herokuapp.com")
+          div.bg-django.p-5.text-center
+            h3 Django Showcase
+            img.showcase-img(src="images/django_icon.png")
+
+    div.row
+      <!--Express-->
+      div.col-6-md
+        div.bg-express.p-5.text-center
+            h3 Express Showcase
+            img.showcase-img(src="images/express_icon.png")
+
+      <!--ASP.NET Core-->
+      div.col-6-md
+        a(style="text-decoration: none;", href="#")
+          div.bg-asp.p-5.text-center
+            h3 Asp.Net Core Showcase
+            img.showcase-img(src="images/asp_core_icon.png")
+
+
+//- SideBar
+block sidebar-type
+    h4 Home Page
+
+block sidebar-tech
+    ul
+        li 
+          h4 Nodejs
+        li 
+          h4 Express
+        li 
+          h4 Postgres
+        li 
+          h4 Sequelize
+        li
+          h4 Heroku
+    
+block sidebar-desc
+    h4 Home Page is a connection of each site that is deployed by me. These sites are built to be similar but may have slight differences.
+block sidebar-comment
+    h4 Feel free to check each on out each site has a credential system that encrypts passwords and allows more functionality on each site.

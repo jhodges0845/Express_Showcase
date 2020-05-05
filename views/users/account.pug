@@ -1,0 +1,33 @@
+extends ../layouts/layout
+
+block content
+    form(action="/users/account", method="POST")
+        fieldset.form-group
+            legend.border-bottom.mb-4 #{form.username.text}'s Account
+            <!--Username-->
+            div.form-group
+                #{form.username.label}.form-control-label Username
+                if form.username.errors.length > 0
+                    #{form.username.field}.form-control.form-control-lg.is-invalid(value=form.username.text)
+                    div.invalid-feedback
+                        for error in form.username.errors
+                            span= error
+                else
+                    #{form.username.field}.form-control.form-control-lg(value=form.username.text)
+
+            <!--Email-->
+            div.form-group
+                #{form.email.label}.form-control-label Email
+                if form.email.errors.length > 0
+                    #{form.email.field}.form-control.form-control-lg.is-invalid(value=form.email.text)
+                    div.invalid-feedback
+                        for error in form.email.errors
+                            span= error
+                else
+                    #{form.email.field}.form-control.form-control-lg(value=form.email.text)
+
+
+        <!--Submit-->
+        div.form.group
+            button.btn.btn-outline-info(type="submit") Update
+

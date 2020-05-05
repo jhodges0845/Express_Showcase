@@ -1,0 +1,73 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.bg-steel {
+  background-color: #5f788a;
+}
+
+.bg-flask{
+  background-color: #fafafa;
+}
+
+.bg-flask:hover, .bg-flask:hover h3{
+  background-color: #343a40;
+  color: white;
+}
+
+.bg-django{
+  background-color: #fafafa;
+}
+
+.bg-django:hover, .bg-django:hover h3 {
+  background-color: #19865c;
+  color: white;
+}
+
+.bg-express, .bg-express h3{
+  background-color: #303030;
+  color: #68A063;
+}
+
+.site-header .navbar-brand{
+  color: #68A063;
+}
+
+.site-header .navbar-nav .nav-link{
+  color: #68A063;
+}
+
+.site-header .navbar-nav .nav-link:hover{
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active{
+  font-weight: 500;
+}
+
+.bg-asp{
+  background-color: #fafafa;
+}
+
+.bg-asp:hover, .bg-asp:hover h3{
+  background-color: #421a59;
+  color: #6bbdd6;
+}
+
+.showcase-img {
+  height: 125px;
+  width: 225px;
+  margin-right: 16px;
+}
